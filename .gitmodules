@@ -1,0 +1,6 @@
+[submodule "libs/Nette"]
+	path = libs/Nette
+	url = git://github.com/nette/nette.git
+[submodule "libs/Doctrine"]
+	path = libs/Doctrine
+	url = git://github.com/doctrine/doctrine2.git

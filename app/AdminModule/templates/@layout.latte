@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Nette Application Skeleton</title>
+
+	<link rel="stylesheet" type="text/css" href="{$baseUri}/css/default.css" />
+</head>
+
+<body>
+	<div id="wrap">
+		<h1>Admin</h1>
+		<div n:foreach="$flashes as $flash" style="flash {$flash->type}">{$flash->message}</div>
+
+		{include #content}
+	</div>
+</body>
+</html>

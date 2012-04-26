@@ -1,0 +1,37 @@
+#
+# SECURITY WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+#
+# If you don't protect this directory from direct web access, anybody will be able to see your passwords.
+# http://nette.org/security-warning
+#
+parameters:
+	database:
+		driver: pdo_mysql
+		host: localhost
+		dbname: doctrine
+		user: root
+		password:
+	entities:
+		- %appDir%/model
+
+
+php:
+	date.timezone: Europe/Prague
+	# session.save_path: "%tempDir%/sessions"
+	# zlib.output_compression: yes
+
+
+nette:
+	session:
+		expiration: '+ 14 days'
+
+
+services:
+	em_config:
+		class: Doctrine\ORM\Configuration
+		factory: Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(%entities%, true)
+	entity_manager:
+		class: Doctrine\ORM\EntityManager
+		factory: Doctrine\ORM\EntityManager::create(%database%, @em_config)
+
+factories:

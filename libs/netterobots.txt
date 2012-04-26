@@ -1,0 +1,6 @@
+Disallow: Nette/tests
+
+Disallow: Doctrine/tests
+Disallow: Doctrine/lib/vendor/doctrine-common/tests
+Disallow: Doctrine/lib/vendor/doctrine-dbal/lib/vendor
+Disallow: Doctrine/lib/vendor/doctrine-dbal/tests
