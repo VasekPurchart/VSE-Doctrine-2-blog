@@ -1,26 +1,11 @@
 {block content}
 
-<h2>Začínáme s Doctrine 2</h2>
+{foreach $articles as $article}
+<h2>{$article->title}</h2>
 
-<p>27. 4. 2012</p>
-
-<p>
-Hned na úvod je potřeba si říct, co můžeme od Doctrine 2 očekávat a co už naopak tento systém neřeší.
-Doctrine 2 je prostě a jednoduše ORM (Object-Relational Mapping).
-Zajišťuje tedy mapování objektů na relační databázi. Nic víc a nic méně.
-
-Více se dočtete v <a href="http://www.zdrojak.cz/serialy/doctrine-2/">seriálu o Doctrine na Zdrojáku</a>.
-</p>
-
-
-<h2>Lehký úvod do Nette</h2>
-
-<p>20. 4. 2012</p>
+<p>{$article->date |date, 'd.m.Y'}</p>
 
 <p>
-Nette Framework je populární nástroj pro vytváření webových aplikací v PHP 5.
-Při programování vám vychází vstříc a nepřidělává vrásky.
-Eliminuje bezpečnostní rizika, podporuje AJAX a znovupoužitelnost.
-
-Stáhnout a vyzkoušet si ho můžete na <a href="http://nette.org/">http://nette.org/</a>.
+{!$article->content}
 </p>
+{/foreach}
