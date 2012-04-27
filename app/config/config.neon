@@ -27,6 +27,8 @@ nette:
 
 
 services:
+	authenticator:
+		class: MyBlog\Authenticator
 	em_config:
 		class: Doctrine\ORM\Configuration
 		factory: Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(%entities%, true)
