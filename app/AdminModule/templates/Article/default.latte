@@ -3,6 +3,7 @@
 <p><a href="{link create}">new</a></p>
 
 <ul>
-	<li><a href="{link edit, id=>2}">Začínáme s Doctrine 2</a></li>
-	<li><a href="{link edit, id=>2}">Lehký úvod do Nette</a></li>
+{foreach $articles as $article}
+	<li><a href="{link edit, id=>$article->id}">{$article->title}</a></li>
+{/foreach}
 </ul>
