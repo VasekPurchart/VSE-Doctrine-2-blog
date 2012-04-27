@@ -56,6 +56,7 @@ class ArticlePresenter extends \AdminModule\BasePresenter
 			$article = new Article();
 			$article->setTitle($values['title']);
 			$article->setContent($values['content']);
+			$article->setAuthor($this->entityManager->find('MyBlog\Author', $this->getUser()->getId()));
 			$this->entityManager->persist($article);
 			$this->entityManager->flush();
 		}

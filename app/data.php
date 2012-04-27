@@ -29,11 +29,18 @@ $container = $configurator->createContainer();
 
 $em = $container->getByType('Doctrine\ORM\EntityManager');
 
-$hash = \MyBlog\Authenticator::calculateHash('test');
-$user = new \MyBlog\Author();
-$user->setName('Vašek Purchart');
-$user->setPasswordHash($hash);
+//$hash = \MyBlog\Authenticator::calculateHash('test');
+//$user = new \MyBlog\Author();
+//$user->setName('Vašek Purchart');
+//$user->setPasswordHash($hash);
+//
+//$em->persist($user);
+//$em->flush();
 
-$em->persist($user);
+$author = $em->find('MyBlog\Author', 1);
+$articles = $em->getRepository('MyBlog\Article')->findAll();
+foreach($articles as $article) {
+	$article->setAuthor($author);
+}
 $em->flush();
 

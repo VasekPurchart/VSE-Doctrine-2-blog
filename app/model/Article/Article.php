@@ -31,6 +31,13 @@ class Article extends \MyBlog\Entity
 	 */
 	private $content;
 
+	/**
+	 * @var MyBlog\Author
+	 *
+	 * @ManyToOne(targetEntity="MyBlog\Author")
+	 */
+	private $author;
+
 	function __construct()
 	{
 		$this->date = new DateTime();
@@ -59,6 +66,16 @@ class Article extends \MyBlog\Entity
 	public function getDate()
 	{
 		return $this->date;
+	}
+
+	public function getAuthor()
+	{
+		return $this->author;
+	}
+
+	public function setAuthor(Author $author)
+	{
+		$this->author = $author;
 	}
 
 }
