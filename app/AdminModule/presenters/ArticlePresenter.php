@@ -46,6 +46,11 @@ class ArticlePresenter extends \AdminModule\BasePresenter
 		$values = $form->getValues();
 		if ($id !== NULL) {
 			// edit
+			$article = $this->entityManager->find('MyBlog\Article', (int) $id);
+			if (!$article) throw new \Nette\Application\BadRequestException();
+			$article->setTitle($values['title']);
+			$article->setContent($values['content']);
+			$this->entityManager->flush();
 		} else {
 			// create
 			$article = new Article();
@@ -59,13 +64,11 @@ class ArticlePresenter extends \AdminModule\BasePresenter
 
 	public function actionEdit($id)
 	{
+		$article = $this->entityManager->find('MyBlog\Article', (int) $id);
+		if (!$article) throw new \Nette\Application\BadRequestException();
 		$this['articleForm']->setDefaults(array(
-			'title' => 'Začínáme s Doctrine 2',
-			'content' => 'Hned na úvod je potřeba si říct, co můžeme od Doctrine 2 očekávat a co už naopak tento systém neřeší.
-Doctrine 2 je prostě a jednoduše ORM (Object-Relational Mapping).
-Zajišťuje tedy mapování objektů na relační databázi. Nic víc a nic méně.
-
-Více se dočtete v <a href="http://www.zdrojak.cz/serialy/doctrine-2/">seriálu o Doctrine na Zdrojáku</a>.',
+			'title' => $article->getTitle(),
+			'content' => $article->getContent(),
 		));
 	}
 
